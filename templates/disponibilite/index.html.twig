@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Les Disponibilités{% endblock %}
+
+{% block body %}
+
+
+
+
+<div class="types-de-bien-cadre">
+    <h1 class="my-4">Les disponibilités</h1>
+</div>
+{{ form_start(form) }}
+
+<div class="container">
+        <div class="row justify-content-center">
+            <div class="col-10">
+                <form>
+                    <div class="row g-3">
+                        <div class="col">
+                            {{ form_row(form.dateDebut) }}
+                        </div>
+                        <div class="col">
+                            {{ form_row(form.dateFin) }}
+                        </div>
+                        <div class="col">
+                            {{ form_row(form.prixMax) }}
+                        </div>
+                        <div class="col">
+                            <button class="btn btn-primary" type="submit">RECHERCHER</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{{ form_end(form) }}
+<div class="row row-cols-1 row-cols-md-3 g-4">
+  {% for uneDisponibilite in lesDisponibilites %}
+  <div class="col">
+    <div class="card">
+      <img src="{{asset('images/vehicule/'~ uneDisponibilite.idvehicule.image)}}" class="card-img-top" alt="image de la voiture"/>
+      <div class="card-body">
+        <h5 class="card-title">Le véhicule {{uneDisponibilite.idvehicule.marque}}&nbsp;{{uneDisponibilite.idvehicule.modele}}</h5>
+        <p>Il sera disponible du {{ uneDisponibilite.datedebut|date('d/m/Y') }} au {{ uneDisponibilite.datefin|date('d/m/Y') }}. 
+        Le prix de la location sera de {{ uneDisponibilite.prixparjour }} € par jour.</p>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+{% endblock %}
