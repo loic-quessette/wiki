@@ -2,10 +2,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: symfony-app
-  labels:
-    app: symfony
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: symfony
@@ -15,15 +13,7 @@ spec:
         app: symfony
     spec:
       containers:
-      - name: symfony-app
-        image: your-dockerhub-username/symfony-app:latest
+      - name: symfony
+        image: your-docker-repo/symfony-app:latest
         ports:
         - containerPort: 80
-        env:
-        - name: APP_ENV
-          value: prod
-        - name: DATABASE_URL
-          valueFrom:
-            secretKeyRef:
-              name: symfony-secrets
-              key: database_url
