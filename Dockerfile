@@ -1,3 +1,8 @@
+FROM jenkins/agent
+
+USER root
+RUN apt-get update && apt-get install -y docker.io
+
 FROM php:8.1-fpm
 
 # Install required extensions
