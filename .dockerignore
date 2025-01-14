@@ -1,5 +1,3 @@
 .git
-vendor/
-node_modules/
-tests/
-.env
+node_modules
+vendor
