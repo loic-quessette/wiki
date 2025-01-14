@@ -1,0 +1,11 @@
+version: '3'
+services:
+  symfony:
+    build: .
+    container_name: symfony_app
+    ports:
+      - "8000:80"
+    volumes:
+      - .:/var/www/symfony
+    environment:
+      - SYMFONY_ENV=prod
