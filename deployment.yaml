@@ -3,17 +3,17 @@ kind: Deployment
 metadata:
   name: symfony-app
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
-      app: symfony
+      app: symfony-app
   template:
     metadata:
       labels:
-        app: symfony
+        app: symfony-app
     spec:
       containers:
       - name: symfony
-        image: your-docker-repo/symfony-app:latest
+        image: docker.io/loic1234/symfony-app:latest
         ports:
         - containerPort: 80
